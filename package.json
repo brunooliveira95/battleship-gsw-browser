@@ -10,7 +10,6 @@
     "docs_watch": "watch \"npm run docs_gen\" public",
     "docs_serve": "echo Docs are being served on port 8082! && live-server -q --port=8082 --no-browser jsdoc_output/",
     "docs": "concurrently --kill-others \"npm run docs_serve\" \"npm run docs_watch\"",
-    "postinstall": "bower install",
     "webpack": "webpack",
     "test": "mocha-webpack public/**/*.spec.js"
   },
