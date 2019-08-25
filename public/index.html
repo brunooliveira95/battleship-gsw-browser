@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> 
+    <title>Battleship Game (GSW)</title>
+  </head>
+  <body ng-app="app" ng-controller="IndexController as ctrl" ng-cloak>
+    <div class="title">
+      <h1>Battleship Game (GSW)</h1>
+    </div>
+
+    <section class="loading" ng-if="ctrl.loading">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+      <h5>Carregado jogo...</h5>
+    </section>
+
+    <section class="load-failed" ng-if="ctrl.loadGameError && !ctrl.loading">
+      <h5>Falha ao carregar jogo</h5>
+      <a class="waves-effect waves-light btn red" ng-click="ctrl.loadGame()">
+        <i class="material-icons left">error</i>
+        Carregar novamente
+      </a>
+    </section>
+
+    <section class="new-game" ng-if="!ctrl.game && !ctrl.loading && !ctrl.loadGameError">
+      <a class="waves-effect waves-light btn cyan" ng-click="ctrl.startGame()">
+        <i class="material-icons left">play_arrow</i>
+        Começar novo jogo
+      </a>
+    </section>
+
+    <section ng-if="ctrl.game">
+      <section ng-if="ctrl.isPlayerOneTurn()">
+        <h4>Turno do jogador 1</h4>
+        <board-component my-board-input="ctrl.game.PlayerOne.Board"></board-component>
+      </section>
+      <section ng-if="ctrl.isPlayerTwoTurn()">
+        <h4>Turno do jogador 1</h4>
+        <board-component my-board-input="ctrl.game.PlayerTwo.Board"></board-component>
+      </section>
+    </section>
+    
+    <!-- <super-awesome-component some-input="2" some-output="IndexCtrl.fancyValue = IndexCtrl.fancyValue + IndexCtrl.addValue"></super-awesome-component> -->
+    
+  </body>
+  <tail>
+    <script src="index-bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </tail>
+</html>
