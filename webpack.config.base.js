@@ -40,7 +40,8 @@ module.exports = {
   devServer: {
     publicPath: '/',
     contentBase: path.join(__dirname, '/public'),
-    compress: true
+    compress: true,
+    port: 9000
   },
   devtool: 'eval'
 }
