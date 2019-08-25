@@ -1,0 +1,49 @@
+<section class="container">
+    <h3>Meu tabuleiro</h3>
+    <small>Legenda: PA = Porta Aviões, EN = Encouraçado, SM = Submarino, DT = Destroyer, BP = Barco de Patrulha</small>
+    <section class="grid">
+        <div class="item {{position.color}}" 
+        ng-class="$ctrl.isSettingShip && !position.ship ? 'pointer' : ''" 
+        ng-repeat="position in $ctrl.myPositions"
+        ng-click="$ctrl.setShip(position)">
+            {{position.ship}}
+        </div>
+    </section>
+    <div ng-if="$ctrl.canSetShips()">
+      <small>Clique em um navio para posicionar (Só é possível posicionar um navio por vez)</small><br/>
+      <a class="waves-effect waves-light btn-small cyan" 
+        ng-click="$ctrl.startSetShip('carrier')" 
+        ng-disabled="$ctrl.isSettingShip || $ctrl.isShipSetted('carrier')">
+        <i class="material-icons left">near_me</i>
+        Posicionar Porta Aviões
+      </a><br/>
+      <a class="waves-effect waves-light btn-small cyan"
+        ng-click="$ctrl.startSetShip('battleship')" 
+        ng-disabled="$ctrl.isSettingShip || $ctrl.isShipSetted('battleship')">
+        <i class="material-icons left">near_me</i>
+        Posicionar Encouraçado
+      </a><br/>
+      <a class="waves-effect waves-light btn-small cyan"
+        ng-click="$ctrl.startSetShip('submarine')" 
+        ng-disabled="$ctrl.isSettingShip || $ctrl.isShipSetted('submarine')">
+        <i class="material-icons left">near_me</i>
+        Posicionar Submarino
+      </a><br/>
+      <a class="waves-effect waves-light btn-small cyan"
+        ng-click="$ctrl.startSetShip('destroyer')" 
+        ng-disabled="$ctrl.isSettingShip || $ctrl.isShipSetted('destroyer')">
+        <i class="material-icons left">near_me</i>
+        Posicionar Destroyer
+      </a><br/>
+      <a class="waves-effect waves-light btn-small cyan"
+        ng-click="$ctrl.startSetShip('cruiser')" 
+        ng-disabled="$ctrl.isSettingShip || $ctrl.isShipSetted('cruiser')">
+        <i class="material-icons left">near_me</i>
+        Posicionar Barco de Patrulha
+      </a>
+    </div>
+    <h3>Tabuleiro inimigo</h3>
+    <section class="grid">
+        <div class="item {{position.color}}" ng-repeat="position in $ctrl.enemyPositions"></div>
+    </section>
+</section>
