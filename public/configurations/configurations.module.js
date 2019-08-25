@@ -1,3 +1,3 @@
 export default {
-    apiUrl: 'http://localhost:3000'
+    apiUrl: 'https://battleship-gsw-server.herokuapp.com/'
 }
